@@ -115,4 +115,27 @@ public class Method {
 
         }
     }
+
+    public static double SumSalaryPartTime(Employee[] employees){
+        double sum = 0;
+        for (int i = 0; i < employees.length ; i++) {
+            if(employees[i] instanceof ParttimeEmployee){
+                sum = sum + employees[i].getNetSalary();
+            }
+
+        }
+        return sum;
+    }
+    public static void SortSalaryFullTime(Employee[] employees) {
+        int temp = 0;
+        for (int i = 0; i < employees.length ; i++) {
+            for (int j = i+1; j < employees.length ; j++) {
+                if(employees[j] instanceof FulltimeEmployee){
+                    if (employees[j].getNetSalary() < employees[i].getNetSalary()){
+
+                    }
+                }
+            }
+        }
+    }
 }
