@@ -1,4 +1,4 @@
-public class Employee {
+public abstract class Employee {
     private String employeeID;
     private String fullName;
     private int age;
@@ -55,5 +55,18 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public abstract double getNetSalary();
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeID='" + employeeID + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

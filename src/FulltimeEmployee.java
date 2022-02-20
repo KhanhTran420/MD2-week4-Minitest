@@ -43,4 +43,23 @@ public class FulltimeEmployee extends  Employee {
     public void setBaseSalary(int baseSalary) {
         this.baseSalary = baseSalary;
     }
+
+    public  double getNetSalary(){
+        double result = baseSalary + (bonus - fineMoney);
+        return  result;
+    }
+
+    @Override
+    public String toString() {
+        return "FullTimeEmployee{" +
+                "employeeID='" + super.getEmployeeID() + '\'' +
+                ", fullName='" + super.getFullName() + '\'' +
+                ", age=" + super.getAge() +
+                ", phoneNumber='" + super.getPhoneNumber() + '\'' +
+                ", email='" + super.getEmail() + '\'' +
+                ", bonus=" + bonus +
+                ", fineMoney=" + fineMoney +
+                ", basicSalary=" + baseSalary +
+                '}';
+    }
 }
