@@ -37,7 +37,7 @@ public class Client {
 
                     break;
                 case 4:
-
+                     deleteEmployee();
                     break;
                 case 0:
                     System.exit(0);
@@ -52,6 +52,21 @@ public class Client {
             System.out.println(e);
         }
     }
+
+    public static void deleteEmployee() {
+        Scanner inputID = new Scanner(System.in);
+        System.out.println("Nhập ID nhân viên muốn xóa: ");
+        String ID = inputID.nextLine();
+
+        for (int i = 0; i < employeesListClient.size(); i++) {
+            if (employeesListClient.get(i).getEmployeeID().equals(ID)) {
+                employeesListClient.remove(i);
+            }
+        }
+    }
+
+
+
 
     public static void addNewEmployee(){
         int choice = -1;
