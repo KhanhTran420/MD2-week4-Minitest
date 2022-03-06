@@ -1,4 +1,8 @@
-public abstract class Employee {
+package model;
+
+import java.io.Serializable;
+
+public abstract class Employee implements Serializable {
     private String employeeID;
     private String fullName;
     private int age;
@@ -61,7 +65,7 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "model.Employee{" +
                 "employeeID='" + employeeID + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", age=" + age +

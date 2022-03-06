@@ -1,4 +1,8 @@
-public class FulltimeEmployee extends  Employee {
+package model;
+
+import model.Employee;
+
+public class FulltimeEmployee extends Employee {
     private int bonus;
     private int fineMoney;
     private int baseSalary;

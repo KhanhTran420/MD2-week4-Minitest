@@ -1,29 +1,88 @@
+package view;
+
+import controller.EmployeeManager;
+import model.Employee;
+import model.FulltimeEmployee;
+import model.ParttimeEmployee;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Method {
-    // Duyệt mảng employee để hiển thị nhân viên
-    public static void displayEmployee(Employee[] employees){
-        for (Employee e: employees
-        ){
+public class Client {
+
+    private static ArrayList<Employee> employeesListClient = EmployeeManager.employeeList;
+
+    public static void main(String[] args) {
+
+
+        int choice = -1;
+        Scanner inputChoice = new Scanner(System.in);
+        while (choice != 0){
+            System.out.println("Menu");
+            System.out.println("1. Thêm mới nhân viên");
+            System.out.println("2. Hiển thị danh sách nhân viên");
+            System.out.println("3. Sửa thông tin nhân viên");
+            System.out.println("4. xóa nhân viên khỏi danh sách");
+            System.out.println("0. Exit!");
+            System.out.println("Nhập lựa chọn: ");
+            choice = inputChoice.nextInt();
+            switch (choice){
+                case 1:
+                    addNewEmployee();
+                    break;
+                case 2:
+                    showAllEmployee();
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 0:
+                    System.exit(0);
+                default:
+                    System.out.println("Chưa nhập lựa chọn!");
+            }
+        }
+    }
+
+    public static void showAllEmployee(){
+        for (Employee e : employeesListClient){
             System.out.println(e);
         }
     }
 
-     // Thêm mới nhân viên
-    public static Employee[] addNewEmployee(Employee[] employees, Employee newEmployee){
-        // Khai báo mảng mới
-        Employee[] newEmployeeList = new Employee[employees.length + 1];
-        // Copy mảng cũ sang mảng mới
-        for (int i = 0; i < employees.length ; i++) {
-            newEmployeeList[i] = employees[i];
+    public static void addNewEmployee(){
+        int choice = -1;
+        Scanner inputChoice = new Scanner(System.in);
+        while (choice!=0){
+            System.out.println("Add new employee:");
+            System.out.println("1. New part time");
+            System.out.println("2. New full time ");
+            System.out.println("0. Return to main menu ");
+            choice = inputChoice.nextInt();
+            switch (choice){
+                case 1:
+                    Employee fulltimeEmployee = creatNewFulltimeEmployee();
+                    EmployeeManager.addNewEmployee(fulltimeEmployee);
+                    break;
+                case 2:
+                    Employee parttimeEmployee = createNewPartTimeEmployee();
+                    EmployeeManager.addNewEmployee(parttimeEmployee);
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("please let's choose one!");
+
+
+            }
         }
-        // Gán nhân viên mới vào phần tử cuối
-        newEmployeeList[employees.length] = newEmployee;
-        return newEmployeeList;
     }
 
-
     public static Employee creatNewFulltimeEmployee(){
+
         Scanner inputIDFT = new Scanner(System.in);
         System.out.println("Nhập ID nhân viên Fulltime: ");
         String employeeID = inputIDFT.nextLine();
@@ -59,7 +118,6 @@ public class Method {
 
         Employee newEmployee = new FulltimeEmployee(employeeID, fullName, age, phoneNumber, email, bonus, fineMoney, baseSalary);
         return newEmployee;
-
     }
 
     public static Employee createNewPartTimeEmployee() {
@@ -91,51 +149,9 @@ public class Method {
         return newEmployee;
     }
 
-    public static double getAllTimeEmployeeSalary(Employee[] employees){
-        double sum = 0;
-        double avg = 0;
-        int count = 0;
-        for (int i = 0; i < employees.length ; i++) {
-            sum += employees[i].getNetSalary();
-            count++;
-        }
-        avg=sum/count;
-        return  avg;
-    }
 
-
-    public static void EmployeeFTLowerSalary(Employee[] employees){
-        for (int i = 0; i < employees.length ; i++) {
-            if (employees[i] instanceof FulltimeEmployee){
-                double netSalary = employees[i].getNetSalary();
-                if(netSalary < getAllTimeEmployeeSalary(employees)){
-                    System.out.println(employees[i].getFullName());
-                }
-            }
-
-        }
-    }
-
-    public static double SumSalaryPartTime(Employee[] employees){
-        double sum = 0;
-        for (int i = 0; i < employees.length ; i++) {
-            if(employees[i] instanceof ParttimeEmployee){
-                sum = sum + employees[i].getNetSalary();
-            }
-
-        }
-        return sum;
-    }
-    public static void SortSalaryFullTime(Employee[] employees) {
-        int temp = 0;
-        for (int i = 0; i < employees.length ; i++) {
-            for (int j = i+1; j < employees.length ; j++) {
-                if(employees[j] instanceof FulltimeEmployee){
-                    if (employees[j].getNetSalary() < employees[i].getNetSalary()){
-
-                    }
-                }
-            }
-        }
-    }
 }
+
+
+
+

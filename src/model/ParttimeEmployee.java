@@ -1,3 +1,7 @@
+package model;
+
+import model.Employee;
+
 public class ParttimeEmployee extends Employee {
     public static final  int SALARYPERHOUR = 100000;
     private double workHour;
